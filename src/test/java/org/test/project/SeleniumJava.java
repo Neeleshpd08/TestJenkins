@@ -73,4 +73,58 @@ public class SeleniumJava {
 		}
 	}
 
+	@Test  
+	public void secondTestCase() {
+		// TODO Auto-generated method stub
+		try { 
+			driver=new ChromeDriver();
+			Actions action=new Actions(driver);
+			WebDriverWait wt=new WebDriverWait(driver,Duration.ofSeconds(60));
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			driver.get("https://demoqa.com/");
+			driver.manage().window().maximize();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+			String elementTab = "//h5[contains(text(),'Elements')]/../..";
+			WebElement eleTab = driver.findElement(By.xpath(elementTab));
+			js.executeScript("arguments[0].scrollIntoViewIfNeeded(true);", eleTab);
+			eleTab.click();
+
+			String textBox = "//span[contains(text(),'Text Box')]";
+			WebElement textBoxClk=driver.findElement(By.xpath(textBox));
+			textBoxClk.click();
+
+			String fullName = "userName";
+			WebElement fullNameSend = driver.findElement(By.id(fullName));
+			action.scrollToElement(fullNameSend);
+			fullNameSend.sendKeys("Neelesh Gupta");
+
+			String email = "neelesh.gupta@text.com";
+			WebElement emailSend = driver.findElement(By.id("userEmail"));
+			emailSend.sendKeys(email);
+
+			String currentAdd = "Bangalore India";
+			WebElement currentAddSend=driver.findElement(By.id("currentAddress"));
+			currentAddSend.sendKeys(currentAdd);
+
+			String permanentAdd = "Bangalore India";
+			WebElement permanentAddSend = driver.findElement(By.id("permanentAddress"));
+			permanentAddSend.sendKeys(permanentAdd);
+
+			WebElement submitBtn=driver.findElement(By.xpath("//*[@id='submit']"));
+			js.executeScript("arguments[0].scrollIntoView(true);", submitBtn);
+			submitBtn.click();
+			
+			WebElement emailVerification=driver.findElement(By.xpath("//p[@id='email']"));
+			String emailValue = emailVerification.getText().split(":")[1];
+			Assert.assertEquals(email,emailValue,"Values are not matching");
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		finally {
+			driver.quit();
+		}
+	}
+
 }
