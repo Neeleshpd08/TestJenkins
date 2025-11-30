@@ -1,28 +1,20 @@
 package org.test.project;
-
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.test.project.org.test.project.BaseClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class SeleniumJava {
-
-	WebDriver driver= null;
+public class SeleniumJava extends BaseClass {
 
 	@Test  
 	public void firstTestCase() {
-		// TODO Auto-generated method stub
-		try { 
 			driver=new ChromeDriver();
 			Actions action=new Actions(driver);
 			WebDriverWait wt=new WebDriverWait(driver,Duration.ofSeconds(60));
@@ -64,19 +56,10 @@ public class SeleniumJava {
 			WebElement emailVerification=driver.findElement(By.xpath("//p[@id='email']"));
 			String emailValue = emailVerification.getText().split(":")[1];
 			Assert.assertEquals(email,emailValue,"Values are not matching");
-		}
-		catch(Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-		finally {
-			driver.quit();
-		}
 	}
 
 	@Test  
 	public void secondTestCase() {
-		// TODO Auto-generated method stub
-		try { 
 			driver=new ChromeDriver();
 			Actions action=new Actions(driver);
 			WebDriverWait wt=new WebDriverWait(driver,Duration.ofSeconds(60));
@@ -116,15 +99,8 @@ public class SeleniumJava {
 			submitBtn.click();
 			
 			WebElement emailVerification=driver.findElement(By.xpath("//p[@id='email']"));
-			String emailValue = emailVerification.getText().split(":")[1];
+			String emailValue = emailVerification.getText().split(":")[0];
 			Assert.assertEquals(email,emailValue,"Values are not matching");
-		}
-		catch(Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-		finally {
-			driver.quit();
-		}
 	}
 
 }
