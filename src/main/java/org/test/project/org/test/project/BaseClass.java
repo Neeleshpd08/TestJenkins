@@ -50,7 +50,7 @@ public class BaseClass {
     @AfterMethod
     public void tearDownTest(ITestResult result) throws IOException {
         if(result.getStatus() == ITestResult.FAILURE) {
-        	String screenshotPath = captureScreenshot(driver,result.getTestName());
+        	String screenshotPath = captureScreenshot(driver,result.getName());
             test.fail(result.getThrowable()).addScreenCaptureFromPath(screenshotPath);;
         } else if(result.getStatus() == ITestResult.SUCCESS) {
             test.pass("Test Passed");
