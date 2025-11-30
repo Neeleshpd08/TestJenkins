@@ -99,7 +99,7 @@ public class SeleniumJava extends BaseClass {
 			submitBtn.click();
 			
 			WebElement emailVerification=driver.findElement(By.xpath("//p[@id='email']"));
-			String emailValue = emailVerification.getText().split(":")[0];
+			String emailValue = emailVerification.getText().split(":")[1];
 			Assert.assertEquals(email,emailValue,"Values are not matching");
 	}
 
