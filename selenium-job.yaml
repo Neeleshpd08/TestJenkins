@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: selenium-java-job
+
+spec:
+  backoffLimit: 1
+
+  template:
+    spec:
+      restartPolicy: Never
+
+      containers:
+      - name: selenium-java
+        image: selenium-java:latest
+        imagePullPolicy: Never
