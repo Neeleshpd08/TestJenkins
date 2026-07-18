@@ -132,7 +132,7 @@ public class SeleniumJava extends BaseClass {
 		test.log(Status.INFO,"This testcase is passed");
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());
-			System.out.println("This is just to push the event and check github pipeline is triggered or not");
+			System.out.println("This is push jenkins pipeline");
 		}
 	}
 }
